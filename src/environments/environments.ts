@@ -1,0 +1,23 @@
+export const environment = {
+    mainURL: "https://localhost:7099/",
+    login: 'api/Login/Login',
+    signin:'api/Login/SignIn',
+    holidays:'api/Home/GetAllHolidays',
+    inventory:'api/Home/GetInventoryDetails',
+    allocation:'api/Home/GetAllocationDetails',
+    submitBooking: 'api/Home/SubmitBooking',
+    allBooking: 'api/Home/GetAllBooking',
+    deleteBooking: 'api/Home/RemoveBooking',
+    editBooking: 'api/Home/EditBooking',
+    adminHolidays:'api/admin/GetAllHolidaysList',
+    deleteHoliday: 'api/admin/RemoveHoliday',
+    editHoliday: 'api/admin/EditHoliday',
+    addHoliday: 'api/admin/AddHoliday',
+    allInventory:'api/admin/GetAllInventory',
+    deleteInventory: 'api/admin/RemoveInventory',
+    editInventory: 'api/admin/EditInventory',
+    addInventory: 'api/admin/AddInventory',
+    weather: 'WeatherForecast',
+    sessionTimeout: 1260,
+    version: "1.0"
+  };

@@ -1,0 +1,249 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css");
+
+/*=============== BASE ===============*/
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body,
+input,
+button {
+  font-family: "Poppins", sans-serif;
+  font-size: 1remS;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== LOGIN ===============*/
+.login {
+  position: relative;
+  height: 100vh;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+}
+
+.login__bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.login__form {
+  position: relative;
+  margin-inline: 1.5rem;
+  background-color: hsla(0, 0%, 100%, .01);
+  border: 2px solid hsla(0, 0%, 100%, .7);
+  padding: 2.5rem 1rem;
+  color: hsl(0, 0%, 100%);
+  border-radius: 1rem;
+  backdrop-filter: blur(16px);
+}
+
+.login__title {
+  text-align: center;
+   font-size: var(2rem); 
+  margin-bottom: 1.25rem;
+}
+
+.login__inputs, 
+.login__box {
+  display: grid;
+}
+
+.login__inputs {
+  row-gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.login__box {
+  grid-template-columns: 1fr max-content;
+  column-gap: .75rem;
+  align-items: center;
+  border: 2px solid hsla(0, 0%, 100%, .7);
+  padding-inline: 1.25rem;
+  border-radius: 4rem;
+}
+
+.login__input, 
+.login__button {
+  border: none;
+  outline: none;
+}
+
+.login__input {
+  width: 100%;
+  background: none;
+  color: hsl(0, 0%, 100%);
+  padding-block: 1rem;
+}
+
+.login__input::placeholder {
+  color: hsl(0, 0%, 100%);
+}
+
+.login__box i {
+  font-size: 1.25rem;
+}
+
+.login__check, 
+.login__check-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login__check {
+  margin-bottom: 1rem;
+  font-size: .813rem;
+}
+
+.login__check-box {
+  column-gap: .5rem;
+}
+
+.login__check-input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: hsl(0, 0%, 100%);
+}
+
+.login__forgot {
+  color: hsl(0, 0%, 100%);
+}
+
+.login__forgot:hover {
+  text-decoration: underline;
+}
+
+.login__button {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 4rem;
+  color: hsl(0, 0%, 0%);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.login__register {
+  font-size: .813rem;
+  text-align: center;
+}
+
+.login__register a {
+  color: hsl(0, 0%, 100%);
+  font-weight: 500;
+}
+
+.login__register a:hover {
+  text-decoration: underline;
+}
+
+.login__warning{
+  color: #ff4242;
+  font-size: large;
+  padding: 0px 5px 10px 5px;
+  text-align: center;
+}
+
+.login__warning__border{
+  border-color: #ff4242;
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For medium devices */
+@media screen and (min-width: 576px) {
+  .login {
+    justify-content: center;
+  }
+  .login__form {
+    width: 420px;
+    padding-inline: 2.5rem;
+  }
+  .login__title {
+    margin-bottom: 2rem;
+  }
+}
+
+/* star */
+.signup-stars {
+  background-image: radial-gradient(2px 2px at 50px 200px, #eee, rgba(0, 0, 0, 0)), radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)), radial-gradient(3px 4px at 120px 40px, #ddd, rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 250px 250px;
+  opacity: 0;
+  animation: zoom 10s infinite;
+}
+.signup-space, .signup-stars {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.signup-stars:nth-child(6) {
+  background-position: 50% 20%;
+  animation-delay: 6s;
+}
+
+.signup-stars:nth-child(5) {
+  background-image: radial-gradient(2px 2px at 10px 100px, #eee, rgba(0, 0, 0, 0)), radial-gradient(2px 2px at 20px 10px, #fff, rgba(0, 0, 0, 0)), radial-gradient(3px 4px at 150px 40px, #ddd, rgba(0, 0, 0, 0));
+  background-position: 80% 30%;
+  animation-delay: 4s;
+}
+
+.signup-stars:nth-child(4) {
+  background-position: -20% -30%;
+  transform: rotate(60deg);
+  animation-delay: 2.5s;
+}
+
+.signup-stars:nth-child(3) {
+  background-position: 40% -80%;
+  animation-delay: 1.2s;
+}
+
+.signup-stars:nth-child(2) {
+  background-position: 20% 50%;
+  background-size: 270px 500px;
+  animation-delay: .3s;
+}
+
+.signup-stars:nth-child(1) {
+    background-position: 10% 90%;
+    animation-delay: 0s;
+}
+
+@keyframes zoom {
+0% {
+  opacity: 0;
+  transform: scale(0.5);
+  transform: rotate(5deg);
+  animation-timing-function: ease-in;
+}
+85% {
+  opacity: 1;
+}
+100% {
+  opacity: .2;
+  transform: scale(2.2);
+}
+}

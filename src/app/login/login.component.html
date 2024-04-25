@@ -1,0 +1,72 @@
+<!-- <div ng-app="myApp" ng-controller="myController" class="container">
+    <div class="card login-card">
+      <div class="login-container card-body">
+        <h3 class="text-center text-white font-weight-light mb-4">LOGIN</h3>
+        <form name="myForm" [formGroup]="loginForm">
+            <div class="form-group">
+                <input type="email" name="email" formControlName="username" [(ngModel)]="username" required class="form-control">
+              
+            </div>
+            <div class="form-group">
+                <input type="password" name="pass" formControlName="password" [(ngModel)]="password" required class="form-control">
+            </div>
+
+            <label class="signin">{{loginForm.valid}}</label>
+            <button (click)="authenticate()" [disabled]="!loginForm.valid" ng-disabled="myForm.$invalid" class="btn btn-danger btn-block mb-3">Login</button>
+
+            <label class="signin">New User? Click <a href="javascript:void(0)" (click)="redirectToSignIn()">here</a> to register.</label> 
+
+        </form>
+        <div class="row">
+          <div class="col-md-12">
+            <div [hidden]="!showError" class="alert-danger">Wrong credentials!</div>
+            <div [hidden]="!showSuccess" class="alert-success">Login Successful!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+ 
+      <div class="login" >
+
+        <img src="../../assets/images/login-bg.png" alt="image" class="login__bg">
+        <div class="signup-stars"></div>
+        <div class="signup-stars"></div>
+        <div class="signup-stars"></div>
+        <div class="signup-stars"></div>
+        <div class="signup-stars"></div>
+        <div class="signup-stars"></div>
+
+         <form name="myForm" [formGroup]="loginForm" class="login__form">
+            <h1 class="login__title">Login</h1>
+
+            <div class="login__inputs">
+               <div class="login__box" [ngClass]="{'login__warning__border': showError}">
+                  <input type="email" placeholder="Email ID" name="email" formControlName="username" [(ngModel)]="username" required class="login__input">
+                  <i class="ri-mail-fill"></i>
+               </div>
+
+               <div class="login__box" [ngClass]="{'login__warning__border': showError}">
+                  <input type="password" placeholder="Password" name="pass" formControlName="password" [(ngModel)]="password" required class="login__input">
+                  <i class="ri-lock-2-fill"></i>
+               </div>
+            </div>
+
+            <div class="login__check">
+                <div class="login__check-box">
+                </div>
+               <a href="#" class="login__forgot">Forgot Password?</a>
+            </div>
+
+            <button (click)="authenticate()" [disabled]="!loginForm.valid" ng-disabled="myForm.$invalid"  type="submit" class="login__button">Login</button>
+            
+            <div [hidden]="!showError" class="login__warning">
+                <span>{{errorMessage}}</span>
+            </div>
+
+            <div class="login__register">
+               Don't have an account? <a href="#">Register</a>
+            </div>
+         </form>
+      </div>
