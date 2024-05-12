@@ -15,12 +15,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { SigninComponent } from './signin/signin.component';
+import { PopupComponent } from './popup/popup.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgOtpInputModule } from  'ng-otp-input';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+
 
 const routes: Routes = [
    { path:'', component: LoginComponent},
    { path:'login', component: LoginComponent},
-  // { path: 'home', component: HomeComponent },
-  // { path:'signin', component: SigninComponent },
+   { path: 'home', component: HomeComponent },
+   { path:'signin', component: SigninComponent },
   // { path:'seatbook', component: BookSeatComponent },
   // { path:'admin', component: AdminDashboardComponent },
   // { path:'holiday', component: HolidayComponent },
@@ -31,7 +38,11 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     SpinnerComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    SigninComponent,
+    PopupComponent,
+    ForgotpasswordComponent
   ],
   imports: [
     FormsModule,
@@ -39,6 +50,8 @@ const routes: Routes = [
     RouterModule,
     BrowserModule,
     HttpClientModule,
+    NgOtpInputModule,
+    FontAwesomeModule,
     RouterModule.forRoot(routes),
   ],
   exports: [

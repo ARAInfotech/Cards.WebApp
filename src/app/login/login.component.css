@@ -28,6 +28,24 @@ img {
 }
 
 /*=============== LOGIN ===============*/
+
+.login__form .title{
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+}
+
+.login__form .title::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  border-radius: 5px;
+  background: linear-gradient(135deg,#444444, #f8f9fa);
+}
+
 .login {
   position: relative;
   height: 100vh;
@@ -67,8 +85,9 @@ img {
 }
 
 .login__inputs {
-  row-gap: 1.25rem;
+  row-gap: 0.5rem;
   margin-bottom: 1rem;
+  padding-top: 20px;
 }
 
 .login__box {
@@ -167,6 +186,33 @@ img {
   border-color: #ff4242;
 }
 
+span.text-danger {
+  position: relative;
+    top: -7px;
+    left: 60%;
+    color: #ff4242 !important;
+    width: 40%;
+    font-size: small;
+}
+
+button:disabled,
+button[disabled]{
+  cursor: not-allowed !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus{
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: hsl(0, 0%, 100%);
+}
+
 /*=============== BREAKPOINTS ===============*/
 /* For medium devices */
 @media screen and (min-width: 576px) {
@@ -230,6 +276,10 @@ img {
 .signup-stars:nth-child(1) {
     background-position: 10% 90%;
     animation-delay: 0s;
+}
+
+.login__register > a{
+  cursor: pointer;
 }
 
 @keyframes zoom {
