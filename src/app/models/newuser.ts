@@ -1,9 +1,9 @@
 export class newuser{
-    Email: string = "";
+    UserName: string = "";
     Password: string = "";
-    ConfirmPassword: string = "";
+    Email: string = "";
     FirstName: string = "";
     LastName: string = "";
-    Phone: string = "";
-
+    mobileNumber: string = "";
+    encUserTypeID: string = "";
 }

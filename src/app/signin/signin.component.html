@@ -1,0 +1,139 @@
+<div class="body">
+    <div class="container">
+        <div class="title">Registration</div>
+        <div class="required__text">* Mandatory fields</div>
+        <div class="content">
+        <form name="myForm" [formGroup]="registrationForm">
+            <div class="user-details">
+            <div class="input-box">
+                <span class="details">First Name <span class="required">*</span></span>
+                <input type="text" [ngClass]="{'signin__warning__border': registrationForm.controls['firstName'].dirty && registrationForm.hasError('required', 'firstName') || showError}" 
+                       placeholder="Enter your first name" name="fname" formControlName="firstName" required class="signin__input">
+                <span class="details signin__warning" *ngIf="registrationForm.controls['firstName'].dirty && registrationForm.hasError('required', 'firstName')">
+                    First name can not be empty.
+                </span>
+            </div>
+            <div class="input-box">
+                <span class="details">Last Name <span class="required">*</span></span>
+                <input type="text" [ngClass]="{'signin__warning__border': registrationForm.controls['lastName'].dirty && registrationForm.hasError('required', 'lastName') || showError}" 
+                       placeholder="Enter your last name" name="lname" formControlName="lastName" required class="signin__input">
+                <span class="details signin__warning" *ngIf="registrationForm.controls['lastName'].dirty && registrationForm.hasError('required', 'lastName') || showError">
+                    Last name can not be empty.
+                </span>
+            </div>
+            <div class="input-box" [ngClass]="{'login__warning__border': showError}">
+                <span class="details">Email <span class="required">*</span></span>
+                <input type="email" [ngClass]="{'signin__warning__border': registrationForm.controls['email'].dirty && registrationForm.hasError('required', 'email') || registrationForm.controls['email'].dirty && registrationForm.hasError('email', 'email') || registrationForm.controls['email'].dirty && registrationForm.hasError('userNameNotAvailable', 'email') || showError}" 
+                       placeholder="Enter your email" name="email" formControlName="email" required class="signin__input">
+                <span class="details signin__warning" *ngIf="registrationForm.controls['email'].dirty && registrationForm.hasError('required', 'email') || showError">
+                    Email can not be empty.
+                </span>
+                <span class="details signin__warning" *ngIf="registrationForm.controls['email'].dirty && registrationForm.hasError('email', 'email') || showError">
+                    Email is not valid.
+                </span>
+                <span class="details signin__warning" *ngIf="registrationForm.controls['email'].dirty && registrationForm.hasError('userNameNotAvailable', 'email') || showError">
+                    Email already registered.
+                </span>
+            </div>
+            <div class="input-box" [ngClass]="{'login__warning__border': showError}">
+                <span class="details">Phone Number <span class="required">*</span></span>
+                <input type="text" [ngClass]="{'signin__warning__border': registrationForm.controls['phoneNumber'].dirty && registrationForm.hasError('required', 'phoneNumber') || registrationForm.controls['phoneNumber'].dirty && registrationForm.hasError('invalidPhoneNumber', 'phoneNumber') || showError}" 
+                       placeholder="Enter your number" name="phone" formControlName="phoneNumber" required class="signin__input">
+                <span class="details signin__warning" *ngIf="registrationForm.controls['phoneNumber'].dirty && registrationForm.hasError('required', 'phoneNumber')">
+                    Phone number can not be empty.
+                </span>
+                <span class="details signin__warning" *ngIf="registrationForm.controls['phoneNumber'].dirty && registrationForm.hasError('invalidPhoneNumber', 'phoneNumber')">
+                    Phone number is not valid.
+                </span>
+            </div>
+            <div class="input-box" [ngClass]="{'login__warning__border': showError}">
+                <span class="details">Password <span class="required">*</span></span>
+                <input type="password" [ngClass]="{'signin__warning__border': registrationForm.controls['password'].dirty && registrationForm.hasError('required', 'password') || registrationForm.controls['password'].dirty && registrationForm.hasError('invalidPassword', 'password') || showError}" 
+                       placeholder="Enter your password" name="password" formControlName="password" required class="signin__input">
+                <span class="details signin__warning" *ngIf="registrationForm.controls['password'].dirty && registrationForm.hasError('required', 'password')">
+                    Password can not be empty.
+                </span>
+                <span class="details signin__warning" *ngIf="registrationForm.controls['password'].dirty && registrationForm.hasError('invalidPassword', 'password')">
+                    Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number.
+                </span>
+            </div>
+            <div class="input-box" [ngClass]="{'login__warning__border': showError}">
+                <span class="details">Confirm Password <span class="required">*</span></span>
+                <input type="password" [ngClass]="{'signin__warning__border': registrationForm.controls['confirmPassword'].dirty && registrationForm.hasError('required', 'confirmPassword') || registrationForm.controls['confirmPassword'].dirty && registrationForm.hasError('passwordMismatch', 'confirmPassword') || showError}" 
+                       placeholder="Confirm your password" name="confirmPassword" formControlName="confirmPassword" required class="signin__input">
+                <span class="details signin__warning" *ngIf="registrationForm.controls['confirmPassword'].dirty && registrationForm.hasError('required', 'confirmPassword')">
+                    Confirm password can not be empty.
+                </span>
+                <span class="details signin__warning" *ngIf="registrationForm.controls['confirmPassword'].dirty && registrationForm.hasError('passwordMismatch', 'confirmPassword')">
+                    Passwords should match.
+                </span>
+            </div>
+            </div>
+            <div *ngIf="!isOTPSendSuccess" class="signin__warning">Something went wrong. Please try again.</div>
+            <div >
+                <button class="button" value="Next" (click)="enterOTP()">Next</button> <!-- [disabled]="!registrationForm.valid"  -->
+            </div>
+            <div class="login__register">
+                Already have an account? <a (click)="login()">Login</a> here.
+             </div>
+        </form>
+    </div>
+  </div>
+  <section class="wrapper modal" *ngIf="isVisibleModal">
+    <div class="Otpcontainer modalcontainer">
+        <div class="col-sm-8 offset-sm-2 col-lg-4 offset-lg-3 col-xl-4 offset-xl-3 text-center">
+            <div class="logo">
+                <img src="../../assets/images/logo/otp_logo.png" class="img-fluid" alt="logo">
+            </div>
+            <form class="rounded bg-white shadow p-3">
+                <h3 class="text-dark fw-bolder fs-4 mb-2">OTP Verification</h3>
+
+                <div class="fw-normal text-muted mb-4">
+                    Enter the 6 digit verification code received on your email <span><b>{{maskedEmail}}</b></span>
+                </div>
+                <div class="otp_input text-start mb-4">
+                    <label>Verification code</label> 
+                    <fa-icon class="icon" [icon]="faInfoCircle" title="Verification code will expire in "></fa-icon>
+                    <b><span [ngClass]="{'danger':OTPDanger}">{{displayOTP}}</span></b>
+                    <div class="d-flex align-items-center justify-content-between mt-2 otp-holder">
+                        <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:6, allowNumbersOnly:true}"></ng-otp-input>
+                    </div> 
+                    <div class="signin__warning" style="text-align: center; padding-top: 10px;" *ngIf="isUserRegistrationError">
+                        {{validationMsgOTP}}
+                    </div>
+                </div>  
+
+                <span [ngClass]="{'disabledAnchor':!enableOTPSubmit}">
+                    <button type="submit" class="btn btn-primary submit_btn my-4" (click)="SubmitOTP()" [disabled]="!enableOTPSubmit">Submit</button> 
+                </span>
+
+                <div class="fw-normal text-muted mb-2">
+                    Didn’t get the code ?
+                    <span [ngClass]="{'disabledAnchor':disableResend}">
+                        <input type="button" class="btn btn-link plainLink" value="Resend" [disabled]="disableResend" (click)="enterOTP()" />
+                    </span>
+                    <fa-icon class="icon" [icon]="faInfoCircle" [title]="resendMailTooltip"></fa-icon>
+                </div>
+            </form>
+        </div>
+    </div>
+  </section>
+    <section class="wrapper modal" *ngIf="isUserRegistrationSuccess">
+        <div class="Otpcontainer modalcontainer">
+            <div class="fw-normal text-muted mb-4 success-wrapper" style="width: 23%;height: 36%;border-radius: 0.75rem;">
+                <div class="success">
+                    <h3>
+                        <!-- <i class="fa-solid fa-circle-check fa-2xl"></i> -->
+                        <fa-icon class="circle-icon" [icon]="faCircleCheck"></fa-icon>
+                    </h3>
+                    <br/>
+                    <h4>Welcome Aboard!</h4>
+                    <br/>
+                    <p>Your account has been succesfully created!</p>
+                    <br/>
+                    <button class="btn successBtn" (click)="login()">Continue</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

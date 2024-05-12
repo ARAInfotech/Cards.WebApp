@@ -10,8 +10,27 @@ export class SigninService {
 
   constructor(private actionService:CommonHttp) { }
 
-  SignInAction<T>(newUser:T){
+  SignIn<T>(newUser:T){
     let params = new HttpParams();
     return this.actionService.post<T>(environment.mainURL+environment.signin, newUser, params);
+  }
+  
+  GenerateOTP<T>(newUser:T){
+    let params = new HttpParams();
+    return this.actionService.post<T>(environment.mainURL+environment.generateOTP, newUser, params);
+  }
+
+  CheckUsernameExists(username:string){
+    let params = new HttpParams();
+    return this.actionService.get(environment.mainURL+environment.usernameCheck+"?username="+username);
+  }
+  GetCustomerUserType(){
+    let params = new HttpParams();
+    return this.actionService.get(environment.mainURL+environment.customerUserType);
+  }  
+  
+  SubmitOTP<T>(newUser:T){
+    let params = new HttpParams();
+    return this.actionService.post<T>(environment.mainURL+environment.submitOTP, newUser, params);
   }
 }
