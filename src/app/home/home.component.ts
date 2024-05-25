@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SessionService } from '../services/session.service';
 import { Router } from '@angular/router';
 import { user } from '../models/user';
+import { constants } from '../models/constants';
 
 @Component({
   selector: 'app-home',
@@ -17,11 +18,23 @@ export class HomeComponent {
     private router: Router,
     ){}
     
-    ngOnInit(): void{ 
+    ngOnInit(): void{
       var x = this.sessionSerive.readSession<user>();
 
-      this.firstname = x.firstName;
-      this.lastname = x.lastName;
+      this.router.navigate(['admin/home']);
+
+      // if(x == null || x == undefined){
+      //   sessionStorage.removeItem(constants.sessionName);
+      //   sessionStorage.clear(); 
+      //   this.router.navigate(['']);
+      // }
+      // else{
+      //   this.firstname = x.firstName;
+      //   this.lastname = x.lastName;
+      //   if(x.userTypeID == 1){
+      //     this.router.navigate(['admin/home']);
+      //   }
+      // }
     }
 
 }

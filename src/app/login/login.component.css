@@ -144,6 +144,7 @@ img {
 
 .login__forgot {
   color: hsl(0, 0%, 100%);
+  cursor: pointer;
 }
 
 .login__forgot:hover {

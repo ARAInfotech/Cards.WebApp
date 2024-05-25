@@ -71,7 +71,7 @@
             </div>
             <div *ngIf="!isOTPSendSuccess" class="signin__warning">Something went wrong. Please try again.</div>
             <div >
-                <button class="button" value="Next" (click)="enterOTP()">Next</button> <!-- [disabled]="!registrationForm.valid"  -->
+                <button class="button" value="Next" [disabled]="!registrationForm.valid" (click)="enterOTP()">Next</button> 
             </div>
             <div class="login__register">
                 Already have an account? <a (click)="login()">Login</a> here.
@@ -120,8 +120,8 @@
   </section>
     <section class="wrapper modal" *ngIf="isUserRegistrationSuccess">
         <div class="Otpcontainer modalcontainer">
-            <div class="fw-normal text-muted mb-4 success-wrapper" style="width: 23%;height: 36%;border-radius: 0.75rem;">
-                <div class="success">
+            <!-- <div class="fw-normal text-muted mb-4 success-wrapper" style="width: 23%;height: 36%;border-radius: 0.75rem;"> -->
+                <div class="success container" style="text-align: center">
                     <h3>
                         <!-- <i class="fa-solid fa-circle-check fa-2xl"></i> -->
                         <fa-icon class="circle-icon" [icon]="faCircleCheck"></fa-icon>
@@ -133,7 +133,7 @@
                     <br/>
                     <button class="btn successBtn" (click)="login()">Continue</button>
                 </div>
-            </div>
+            <!-- </div> -->
         </div>
     </section>
 </div>

@@ -73,5 +73,19 @@ export class CustomvalidationService {
 
   validateUserName(userName: string): Promise<any>{
     return this.signinService.CheckUsernameExists(userName).toPromise()
+  } 
+
+  userNameExists(userControl: AbstractControl) {
+    return new Promise(resolve => {
+      setTimeout(async () => {
+        let flag = await this.validateUserName(userControl.value);
+        console.log(flag);
+        if (!flag.result) {
+          resolve({ userNameNotAvailable: true });
+        } else {
+          resolve(null);
+        }
+      }, 100);
+    });
   }
 }

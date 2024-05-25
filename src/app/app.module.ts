@@ -1,12 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule} from '@angular/material/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BnNgIdleService } from 'bn-ng-idle';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { LoadingInterceptor } from './Interceptor/loading.interceptor';
@@ -21,6 +15,32 @@ import { PopupComponent } from './popup/popup.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgOtpInputModule } from  'ng-otp-input';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { AdmindashboardComponent } from './admin/admindashboard/admindashboard.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { BaseChartDirective } from 'ng2-charts';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import { NavComponent } from './admin/nav/nav.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { DashComponent } from './admin/dash/dash.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { CardComponent } from './admin/card/card.component';
+import { ProductSalesChartComponent } from './admin/charts/product-sales-chart/product-sales-chart.component';
+import { AnnualSaleChartComponent } from './admin/charts/annual-sale-chart/annual-sale-chart.component';
+import { SalesTrafficChartComponent } from './admin/charts/sales-traffic-chart/sales-traffic-chart.component';
+import { StoreSessionChartComponent } from './admin/charts/store-session-chart/store-session-chart.component';
+import { OrdersTableComponent } from './admin/tables/orders-table/orders-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatChipsModule } from '@angular/material/chips';
+import { MiniCardComponent } from './admin/mini-card/mini-card/mini-card.component';
 
 
 const routes: Routes = [
@@ -28,8 +48,9 @@ const routes: Routes = [
    { path:'login', component: LoginComponent},
    { path: 'home', component: HomeComponent },
    { path:'signin', component: SigninComponent },
-  // { path:'seatbook', component: BookSeatComponent },
-  // { path:'admin', component: AdminDashboardComponent },
+   { path:'forgotPassword', component: ForgotpasswordComponent },
+   { path:'resetPassword/:id', component: ResetpasswordComponent },
+   { path:'admin/home', component: AdmindashboardComponent },
   // { path:'holiday', component: HolidayComponent },
   // { path:'inventory', component: InventoryComponent }
 ]
@@ -42,7 +63,18 @@ const routes: Routes = [
     HomeComponent,
     SigninComponent,
     PopupComponent,
-    ForgotpasswordComponent
+    ForgotpasswordComponent,
+    ResetpasswordComponent,
+    AdmindashboardComponent,
+    NavComponent,
+    DashComponent,
+    CardComponent,
+    ProductSalesChartComponent,
+    AnnualSaleChartComponent,
+    SalesTrafficChartComponent,
+    StoreSessionChartComponent,
+    OrdersTableComponent,
+    MiniCardComponent
   ],
   imports: [
     FormsModule,
@@ -51,8 +83,21 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     NgOtpInputModule,
-    FontAwesomeModule,
+    BaseChartDirective,
+    FontAwesomeModule,    
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
     RouterModule.forRoot(routes),
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatChipsModule,
   ],
   exports: [
     FormsModule,
@@ -62,7 +107,9 @@ const routes: Routes = [
     BnNgIdleService, 
     {
       provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
-    },
+    }, 
+    provideAnimationsAsync(),
+    provideCharts(withDefaultRegisterables())
 ],
   bootstrap: [AppComponent]
 })
