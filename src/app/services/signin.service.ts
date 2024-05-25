@@ -10,14 +10,14 @@ export class SigninService {
 
   constructor(private actionService:CommonHttp) { }
 
-  SignIn<T>(newUser:T){
+  SignIn<T>(model:T){
     let params = new HttpParams();
-    return this.actionService.post<T>(environment.mainURL+environment.signin, newUser, params);
+    return this.actionService.post<T>(environment.mainURL+environment.signin, model, params);
   }
   
-  GenerateOTP<T>(newUser:T){
+  GenerateSignInOTP<T>(model:T){
     let params = new HttpParams();
-    return this.actionService.post<T>(environment.mainURL+environment.generateOTP, newUser, params);
+    return this.actionService.post<T>(environment.mainURL+environment.generateSignInOTP, model, params);
   }
 
   CheckUsernameExists(username:string){
@@ -29,8 +29,23 @@ export class SigninService {
     return this.actionService.get(environment.mainURL+environment.customerUserType);
   }  
   
-  SubmitOTP<T>(newUser:T){
+  SubmitSignInOTP<T>(model:T){
     let params = new HttpParams();
-    return this.actionService.post<T>(environment.mainURL+environment.submitOTP, newUser, params);
+    return this.actionService.post<T>(environment.mainURL+environment.submitOTP, model, params);
+  }
+  
+  GenerateForgotPasswordOTP<T>(model:T){
+    let params = new HttpParams();
+    return this.actionService.post<T>(environment.mainURL+environment.forgotPasswordOTP, model, params);
+  } 
+  
+  SubmitForgotPasswordOTP<T>(model:T){
+    let params = new HttpParams();
+    return this.actionService.post<T>(environment.mainURL+environment.submitForgotPasswordOTP, model, params);
+  }
+  
+  SubmitResetPassword<T>(model:T){
+    let params = new HttpParams();
+    return this.actionService.post<T>(environment.mainURL+environment.submitResetPassword, model, params);
   }
 }

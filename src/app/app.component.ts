@@ -9,7 +9,7 @@ import { constants } from './models/constants';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'WeddingCards';
+  title = 'Valavi Wedding Cards';
   constructor(private bnIdle: BnNgIdleService) { // initiate it in your component constructor
     this.bnIdle.startWatching(environment.sessionTimeout).subscribe((res) => {
       if(res) {

@@ -13,7 +13,7 @@ selector: 'app-signin',
 templateUrl: './signin.component.html',
 styleUrl: './signin.component.css'
 })
-  export class SigninComponent implements OnInit{
+export class SigninComponent implements OnInit{
 
   private customerUserType: string = "";
   private tempUserID: string = "";
@@ -120,7 +120,7 @@ styleUrl: './signin.component.css'
     this.email = this.registrationForm.value["email"];
     this.maskedEmail = this.censorEmail(this.email);
 
-    this.signinService.GenerateOTP<newuser>(user).subscribe({
+    this.signinService.GenerateSignInOTP<newuser>(user).subscribe({
       next:(data)=>{
         if(data.isSuccess){
           if(this.resendMailTimerInterval!== undefined){
@@ -153,7 +153,7 @@ styleUrl: './signin.component.css'
     model.OTP = this.OTP;
     model.UserID = this.tempUserID;
 
-    this.signinService.SubmitOTP<submitOTP>(model).subscribe({
+    this.signinService.SubmitSignInOTP<submitOTP>(model).subscribe({
       next:(data)=>{
         if(data.isSuccess){
           if(data.result.isSuccess){

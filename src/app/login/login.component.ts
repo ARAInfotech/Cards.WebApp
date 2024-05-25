@@ -17,6 +17,8 @@ export class LoginComponent {
   showError:boolean = false;
   showSuccess:boolean = false;
   errorMessage:string = "";
+  show: boolean = false;
+
   loginForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
@@ -69,5 +71,13 @@ export class LoginComponent {
     this.sessionSerive.writeSession(userData);      
     this.router.navigate(['/home']);
   }
+
+  forgot(): void{
+    this.router.navigate(['/forgotPassword']);
+  }
+  showPassword(){
+    this.show = !this.show
+  }
+
 }
 

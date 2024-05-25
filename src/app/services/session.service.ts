@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { constants } from '../models/constants';
-import{session} from '../models/session';
+import { session } from '../models/session';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,12 @@ export class SessionService {
   }
 
   readSession<T>(){
-    let s = JSON.parse(sessionStorage.getItem(constants.sessionName)|| '{}') as session;
+    let s;
+
+    if(sessionStorage.getItem(constants.sessionName) !== null){
+      s = JSON.parse(sessionStorage.getItem(constants.sessionName)|| '{}') as session;
+    }
+    
     return s as T;
   }
 }

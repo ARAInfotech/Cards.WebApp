@@ -14,14 +14,15 @@
 
       <div class="login__inputs">
          <div class="login__box" [ngClass]="{'login__warning__border': loginForm.controls['username'].dirty && loginForm.hasError('required', 'username') || showError}">
-            <input type="email" placeholder="Email ID" name="email" formControlName="username" required class="login__input">
+            <input type="email" placeholder="Email" name="email" formControlName="username" required class="login__input">
             <i class="ri-mail-fill"></i>
          </div>
          <span class="text-danger" *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required', 'username')">* Email is required</span>
 
          <div class="login__box" [ngClass]="{'login__warning__border': loginForm.controls['password'].dirty && loginForm.hasError('required', 'password') || showError}">
-            <input type="password" placeholder="Password" name="pass" formControlName="password" required class="login__input">
-            <i class="ri-lock-2-fill"></i>
+            <input [type]="show ? 'text' : 'password'" placeholder="Password" name="pass" formControlName="password" required class="login__input">
+            <i class="ri-eye-fill" (click)="showPassword()" *ngIf="show" title="Hide password"></i>
+            <i class="ri-eye-off-fill" (click)="showPassword()" *ngIf="!show" title="Show password"></i>
          </div>
          <span class="text-danger" *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')">* Password is required</span>
       </div>
@@ -29,7 +30,7 @@
       <div class="login__check">
             <div class="login__check-box">
             </div>
-         <a href="#" class="login__forgot">Forgot Password?</a>
+         <a (click)="forgot()" class="login__forgot">Forgot Password?</a>
       </div>
 
       <button (click)="authenticate()" [disabled]="!loginForm.valid" ng-disabled="myForm.$invalid"  type="submit" class="login__button">Login</button>
