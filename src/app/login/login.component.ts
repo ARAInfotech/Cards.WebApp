@@ -14,11 +14,11 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 
 export class LoginComponent {
-  username:string = "";  
-  password:string = "";
   showError:boolean = false;
   showSuccess:boolean = false;
   errorMessage:string = "";
+  show: boolean = false;
+
   loginForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
@@ -28,17 +28,22 @@ export class LoginComponent {
   constructor(private actionService:LoginService, 
     private sessionSerive:SessionService,
     private router: Router,
-    private session:SessionService
     ){}
+
   ngOnInit(): void{ 
     sessionStorage.removeItem(constants.sessionName);
     sessionStorage.clear(); 
   }
 
+  public register(): void{
+    this.router.navigate(['/signin']);
+  }
+
   public authenticate():void{
+    var loginData = this.loginForm.value;
     let loginModel = new LoginModel();
-    loginModel.Username = this.username;
-    loginModel.Password = this.password;
+    loginModel.Username = loginData.username as string;
+    loginModel.Password = loginData.password as string;
     
     this.actionService.loginAction<LoginModel>(loginModel).subscribe({
       next:(data)=>{
@@ -63,19 +68,16 @@ export class LoginComponent {
   }
 
   loginSuccessful(userData: user){
-    alert('Login successful');
-    this.sessionSerive.writeSession(userData);
-    var x = this.session.readSession<user>();
-    if(userData.userTypeID == "BsyERrRMrK0aACpBNAY08w=="){
-      this.router.navigate(['/admin']);
-    }
-    else{
-      this.router.navigate(['/home']);
-    }
+    this.sessionSerive.writeSession(userData);      
+    this.router.navigate(['/home']);
   }
 
-  redirectToSignIn(){
-    this.router.navigate(['/signin']);    
+  forgot(): void{
+    this.router.navigate(['/forgotPassword']);
   }
+  showPassword(){
+    this.show = !this.show
+  }
+
 }
 

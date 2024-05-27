@@ -78,6 +78,17 @@ export class CommonHttp {
         );
     }
 
+    async getAsyncData(url: string){
+        const httpOptions = {
+            headers: this.getHeaderObject(),
+          };
+
+        return await this.httpClient.get<any>(url, httpOptions).pipe(
+            map(response=> response),
+            catchError(error => error)
+        );
+    }
+
     delete(url: string){
         const httpOptions = {
             headers: this.getHeaderObject(),
