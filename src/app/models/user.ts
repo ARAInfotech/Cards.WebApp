@@ -7,7 +7,7 @@ export class user{
     lastName: string = "";
     mobileNumber: string = "";
     password: string = "";
-    userTypeID: string = "";
+    userTypeID!: number;
     userTypeName: string = "";
     token: string = "";
 }

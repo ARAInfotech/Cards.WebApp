@@ -1,0 +1,21 @@
+<!-- <p>COMPONENTE POPUP (HIJO)</p>
+<p>{{valueHijo}}</p>
+<button (click)="enviarDato()">Enviar dato de hijo a padre</button> -->
+
+<div class="modal" *ngIf="visible">
+    <div class="container">
+      <div>
+        <div>
+          <div class="modalHeader">
+            <h2>{{header}}</h2>
+            <span *ngIf="hideClose" (click)="closeModal()">x</span>
+          </div>
+          <div class="modalContent">
+            {{message}}
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
