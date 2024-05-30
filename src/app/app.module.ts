@@ -22,7 +22,6 @@ import { BaseChartDirective } from 'ng2-charts';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { NavComponent } from './admin/nav/nav.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -41,6 +40,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatChipsModule } from '@angular/material/chips';
 import { MiniCardComponent } from './admin/mini-card/mini-card/mini-card.component';
+import { OtpComponent } from './general/otp/otp/otp.component';
+import { DialogComponent } from './general/dialog/dialog/dialog.component';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
 
 
 const routes: Routes = [
@@ -51,8 +54,6 @@ const routes: Routes = [
    { path:'forgotPassword', component: ForgotpasswordComponent },
    { path:'resetPassword/:id', component: ResetpasswordComponent },
    { path:'admin/home', component: AdmindashboardComponent },
-  // { path:'holiday', component: HolidayComponent },
-  // { path:'inventory', component: InventoryComponent }
 ]
 
 @NgModule({
@@ -74,7 +75,9 @@ const routes: Routes = [
     SalesTrafficChartComponent,
     StoreSessionChartComponent,
     OrdersTableComponent,
-    MiniCardComponent
+    MiniCardComponent,
+    OtpComponent,
+    DialogComponent
   ],
   imports: [
     FormsModule,
@@ -92,7 +95,8 @@ const routes: Routes = [
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatMenuModule,
+    MatMenuModule, 
+    MatDialogModule,
     RouterModule.forRoot(routes),
     MatTableModule,
     MatPaginatorModule,
