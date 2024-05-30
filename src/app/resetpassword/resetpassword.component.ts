@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomvalidationService } from '../services/customvalidation.service';
-import { faCircleCheck, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { ResetPasswordModel } from '../models/resetPassword';
 import { SigninService } from '../services/signin.service';
 import { EncryptionService } from '../services/EncryptionService';
+import { DialogComponent } from '../general/dialog/dialog/dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-resetpassword',
@@ -16,15 +17,18 @@ import { EncryptionService } from '../services/EncryptionService';
 export class ResetpasswordComponent {
   public id: string = "";
   showError:boolean = false;
-  isUserRegistrationSuccess:boolean = false;
-  faCircleCheck = faCircleCheck;
   isPasswordResetSuccess:boolean = true;
+  validationMsg:string = "";
+  linkExpired: boolean = false;
+  successPopupHeading:string="Password changed!";
+  successPopupSubHeading:string="Your password has been changed successfully.";
   
   constructor(private route: ActivatedRoute,
     private customValidator: CustomvalidationService,
     private router: Router,
     private signinService:SigninService,
     private encryption: EncryptionService,
+    private dialog: MatDialog,
     private fb: FormBuilder) {}
 
   resetPasswordForm = this.fb.group({  
@@ -53,13 +57,36 @@ export class ResetpasswordComponent {
     this.signinService.SubmitResetPassword<ResetPasswordModel>(resetPassword).subscribe({
       next:(data)=>{
         if(data.isSuccess){
+          this.openDialog();
+          this.validationMsg="";
         }
         else{
+          this.validationMsg=data.errorMessage;
+          if(this.validationMsg == 'Password update request expired.'){
+            this.linkExpired = true;
+            // this.validationMsg+=" Click <a (click)='forgot()' class='login__forgot'>here</a>"
+          }
         }
       },
       error: (e)=>{        
         this.isPasswordResetSuccess=false;
       }
+    });
+  }
+
+  forgot(): void{debugger
+    this.router.navigate(['/forgotPassword']);
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: {
+        header: this.successPopupHeading,
+        subHeader: this.successPopupSubHeading
+      },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.login();
     });
   }
 
