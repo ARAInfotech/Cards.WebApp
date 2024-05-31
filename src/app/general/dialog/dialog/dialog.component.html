@@ -1,0 +1,12 @@
+<div class="dialog-content">
+    <h1>
+        <fa-icon class="circle-icon" [icon]="faCircleCheck"></fa-icon>
+    </h1>
+    <mat-dialog-content class="mat-typography">
+        <h4><p>{{data.header}}</p></h4>
+        <p>{{data.subHeader}}</p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+    <button mat-button color="primary" cdkFocusInitial [mat-dialog-close]="true" >Continue</button>
+    </mat-dialog-actions>
+</div>

@@ -1,0 +1,37 @@
+<!-- <div class="Otpcontainer modalcontainer"> -->
+    <!-- <div class="col-sm-8 offset-sm-2 col-lg-4 offset-lg-3 col-xl-4 offset-xl-3 text-center"> -->
+        <div class="logo">
+            <img src="../../assets/images/logo/otp_logo.png" class="img-fluid" alt="logo">
+        </div>
+        <form class="rounded bg-white shadow p-3">
+            <h3 class="text-dark fw-bolder fs-4 mb-2">OTP Verification</h3>
+
+            <div class="fw-normal text-muted mb-4">
+                <div [innerHTML]="HeaderMessage"></div>
+            </div>
+            <div class="otp_input text-start mb-4">
+                <label>Verification code</label> 
+                <fa-icon class="icon" [icon]="faInfoCircle" title="Verification code will expire in "></fa-icon>
+                <b><span [ngClass]="{'danger':OTPDanger}">{{displayOTP}}</span></b>
+                <div class="d-flex align-items-center justify-content-between mt-2 otp-holder">
+                    <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:6, allowNumbersOnly:true}"></ng-otp-input>
+                </div> 
+                <div class="signin__warning" style="text-align: center; padding-top: 10px;" *ngIf="isUserRegistrationError">
+                    {{validationMsgOTP}}
+                </div>
+            </div>  
+
+            <span [ngClass]="{'disabledAnchor':!enableOTPSubmit}">
+                <button type="submit" class="btn btn-primary submit_btn my-4" (click)="submitOTP()" [disabled]="!enableOTPSubmit">Submit</button> 
+            </span>
+
+            <div class="fw-normal text-muted mb-2">
+                Didn’t get the code ?
+                <span [ngClass]="{'disabledAnchor':disableResend}">
+                    <input type="button" class="btn btn-link plainLink" value="Resend" [disabled]="disableResend" (click)="resendOTP()" />
+                </span>
+                <fa-icon class="icon" [icon]="faInfoCircle" [title]="resendMailTooltip"></fa-icon>
+            </div>
+        </form>
+    <!-- </div>
+</div> -->

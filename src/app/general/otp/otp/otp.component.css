@@ -1,0 +1,83 @@
+/* OTP Verification CSS */
+.wrapper .otp_input input{
+    width:14%;
+    height:70px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+.logo img{
+    max-width:15%;
+}
+.modal {
+  display: table;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .4);
+}
+.modalcontainer {
+  display: table-cell;
+  vertical-align: middle;
+  padding-top: 5.2%;
+}  
+.modalcontainer > div {
+  height: auto;
+  background-color: white;
+  margin: 0 auto;
+  padding: 1rem;
+  box-shadow: 0 0 40px rgba(0, 0, 0, .4);
+  font-family: 'Roboto Condensed',
+  sans-serif;
+}
+@media (max-width:1200px){
+    .wrapper .otp_input input{ 
+        height:50px; 
+    }
+}
+@media (max-width:767px){
+    .wrapper .otp_input input{ 
+        height:40px; 
+    }
+}
+.otp-holder{
+  margin: 0 auto;
+  justify-content: center !important;
+}
+.danger{
+  color: red;
+}
+.icon{
+  padding: 5px;
+  cursor: pointer;
+}
+.disabledAnchor {
+  cursor: not-allowed; 
+}
+.plainLink{
+  background-color: transparent !important;
+    border-color: transparent !important;
+    color: rgba(13, 110, 253, 1) !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+}
+button:disabled,
+button[disabled],
+input[type=button][disabled=disabled]{
+  cursor: not-allowed !important;
+}
+.wrapper .submit_btn{
+    padding:10px 15px;
+    font-weight:500;
+}
+.wrapper .submit_btn:focus{
+    box-shadow: none;
+}
+.signin__warning{
+  color: #ff4242;
+  font-size: small;
+  padding: 0px 5px 10px 5px;
+  text-align: left;
+}
+.signin__warning__border{
+    border-color: #ff4242 !important;
+  }

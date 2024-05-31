@@ -80,9 +80,17 @@
     </div>
   </div>
   <section class="wrapper modal" *ngIf="isVisibleModal">
-    <div class="Otpcontainer modalcontainer">
+     <div class="Otpcontainer modalcontainer">
         <div class="col-sm-8 offset-sm-2 col-lg-4 offset-lg-3 col-xl-4 offset-xl-3 text-center">
-            <div class="logo">
+            <app-otp 
+                [HeaderMessage]="headerMessage" 
+                [OTPValidityTimer]="OtpValidity" 
+                [ResendValidityTimer]="ResendMailValidity"
+                [OTPValidationMsg]="validationMsgOTP"
+                (SubmitOTP)="submitOTPEmitter($event)"
+                (ResendOTP)="resetOTPEmitter()">
+            </app-otp>
+            <!-- <div class="logo">
                 <img src="../../assets/images/logo/otp_logo.png" class="img-fluid" alt="logo">
             </div>
             <form class="rounded bg-white shadow p-3">
@@ -114,26 +122,35 @@
                     </span>
                     <fa-icon class="icon" [icon]="faInfoCircle" [title]="resendMailTooltip"></fa-icon>
                 </div>
-            </form>
+            </form> -->
         </div>
-    </div>
+    </div> 
   </section>
-    <section class="wrapper modal" *ngIf="isUserRegistrationSuccess">
+    <!-- <section class="" *ngIf="isUserRegistrationSuccess">
         <div class="Otpcontainer modalcontainer">
-            <!-- <div class="fw-normal text-muted mb-4 success-wrapper" style="width: 23%;height: 36%;border-radius: 0.75rem;"> -->
-                <div class="success container" style="text-align: center">
-                    <h3>
-                        <!-- <i class="fa-solid fa-circle-check fa-2xl"></i> -->
-                        <fa-icon class="circle-icon" [icon]="faCircleCheck"></fa-icon>
-                    </h3>
-                    <br/>
-                    <h4>Welcome Aboard!</h4>
-                    <br/>
-                    <p>Your account has been succesfully created!</p>
-                    <br/>
-                    <button class="btn successBtn" (click)="login()">Continue</button>
-                </div>
-            <!-- </div> -->
+            <div class="success container" style="text-align: center">
+                <h3>
+                <fa-icon class="circle-icon" [icon]="faCircleCheck"></fa-icon>
+                </h3>
+                <br/>
+                <h4>Welcome Aboard!</h4>
+                <br/>
+                <p>Your account has been succesfully created!</p>
+                <br/>
+                <button class="btn successBtn" (click)="login()">Continue</button>
+            </div>  
+            <div class="dialog-content">
+                <h1>
+                <fa-icon class="circle-icon" [icon]="faCircleCheck"></fa-icon>
+                </h1>
+                <mat-dialog-content class="mat-typography">
+                <h4><p> {{successPopupHeading}}</p></h4>
+                <p>{{successPopupSubHeading}}</p>
+                </mat-dialog-content>
+                <mat-dialog-actions align="end">
+                <button mat-button color="primary" cdkFocusInitial (click)="login()">Continue</button>
+                </mat-dialog-actions>
+            </div> 
         </div>
-    </section>
+    </section> -->
 </div>

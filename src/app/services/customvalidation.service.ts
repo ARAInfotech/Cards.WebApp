@@ -79,7 +79,6 @@ export class CustomvalidationService {
     return new Promise(resolve => {
       setTimeout(async () => {
         let flag = await this.validateUserName(userControl.value);
-        console.log(flag);
         if (!flag.result) {
           resolve({ userNameNotAvailable: true });
         } else {
