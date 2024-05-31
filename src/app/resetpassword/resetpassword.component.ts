@@ -74,7 +74,7 @@ export class ResetpasswordComponent {
     });
   }
 
-  forgot(): void{debugger
+  forgot(): void{
     this.router.navigate(['/forgotPassword']);
   }
 

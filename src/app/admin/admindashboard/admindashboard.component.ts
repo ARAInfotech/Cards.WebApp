@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { constants } from '../../models/constants';
 import { user } from '../../models/user';
 import { SessionService } from '../../services/session.service';
 

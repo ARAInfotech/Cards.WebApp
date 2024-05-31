@@ -20,30 +20,39 @@ import { AdmindashboardComponent } from './admin/admindashboard/admindashboard.c
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { BaseChartDirective } from 'ng2-charts';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
-import { NavComponent } from './admin/nav/nav.component';
+import { NavComponent } from './admin/general/nav/nav.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { DashComponent } from './admin/dash/dash.component';
+import { DashComponent } from './admin/general/dash/dash.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
-import { CardComponent } from './admin/card/card.component';
-import { ProductSalesChartComponent } from './admin/charts/product-sales-chart/product-sales-chart.component';
-import { AnnualSaleChartComponent } from './admin/charts/annual-sale-chart/annual-sale-chart.component';
-import { SalesTrafficChartComponent } from './admin/charts/sales-traffic-chart/sales-traffic-chart.component';
-import { StoreSessionChartComponent } from './admin/charts/store-session-chart/store-session-chart.component';
-import { OrdersTableComponent } from './admin/tables/orders-table/orders-table.component';
+import { CardComponent } from './admin/general/card/card.component';
+import { ProductSalesChartComponent } from './admin/general/charts/product-sales-chart/product-sales-chart.component';
+import { AnnualSaleChartComponent } from './admin/general/charts/annual-sale-chart/annual-sale-chart.component';
+import { SalesTrafficChartComponent } from './admin/general/charts/sales-traffic-chart/sales-traffic-chart.component';
+import { StoreSessionChartComponent } from './admin/general/charts/store-session-chart/store-session-chart.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatChipsModule } from '@angular/material/chips';
-import { MiniCardComponent } from './admin/mini-card/mini-card/mini-card.component';
+import { MiniCardComponent } from './admin/general/mini-card/mini-card/mini-card.component';
 import { OtpComponent } from './general/otp/otp/otp.component';
 import { DialogComponent } from './general/dialog/dialog/dialog.component';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
+import { OrdersTableComponent } from './admin/general/tables/orders-table/orders-table.component';
+import { ProductComponent } from './admin/product/product.component';
+import { OrderComponent } from './admin/order/order.component';
+import { CustomerComponent } from './admin/customer/customer.component';
+import { SaleComponent } from './admin/sale/sale.component';
+import { StatisticsComponent } from './admin/statistics/statistics.component';
+import { ReviewComponent } from './admin/review/review.component';
+import { TransactionComponent } from './admin/transaction/transaction.component';
+import { SellerComponent } from './admin/seller/seller.component';
+import { OfferComponent } from './admin/offer/offer.component';
 
 
 const routes: Routes = [
@@ -77,7 +86,16 @@ const routes: Routes = [
     OrdersTableComponent,
     MiniCardComponent,
     OtpComponent,
-    DialogComponent
+    DialogComponent,
+    ProductComponent,
+    OrderComponent,
+    CustomerComponent,
+    SaleComponent,
+    StatisticsComponent,
+    ReviewComponent,
+    TransactionComponent,
+    SellerComponent,
+    OfferComponent
   ],
   imports: [
     FormsModule,
